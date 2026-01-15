@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * External Web Service for AntiAi
+ * External Web Service for anticrowdly
  *
- * @package    quizaccess_antiai
+ * @package    quizaccess_anticrowdly
  * @copyright  2026 ETH Zurich (moodle@id.ethz.ch)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,7 +27,7 @@ require_once($CFG->libdir . '/externallib.php');
 /**
  * Service functions.
  */
-class quizaccess_antiai_external extends external_api{
+class quizaccess_anticrowdly_external extends external_api{
 
     /**
      * Returns description of method parameters
@@ -59,10 +59,10 @@ class quizaccess_antiai_external extends external_api{
                                            );
 
         $status = $params['status'];
-        if (!isset($SESSION->quizaccess_antiai_access)) {
-            $SESSION->quizaccess_antiai_access = 0;
+        if (!isset($SESSION->quizaccess_anticrowdly_access)) {
+            $SESSION->quizaccess_anticrowdly_access = 0;
         }
-        $SESSION->quizaccess_antiai_access = $status;
+        $SESSION->quizaccess_anticrowdly_access = $status;
         $statusdata[] = [
             'status' => $status,
         ];

@@ -15,32 +15,20 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for quizaccess_anticrowdly.
+ * Strings for the quizaccess_anticrowdly plugin.
  *
- * @package    quizaccess_anticrowdly
+ * @package    quizaccess
+ * @subpackage anticrowdly
  * @copyright  2026 ETH Zurich
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace quizaccess_anticrowdly\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * Privacy Subsystem for quizaccess_anticrowdly implementing null_provider.
- *
- * @copyright  2026 ETH Zurich
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-class provider implements \core_privacy\local\metadata\null_provider {
 
-    /**
-     * Get the language string identifier with the component's language
-     * file to explain why this plugin stores no data.
-     *
-     * @return  string
-     */
-    public static function get_reason(): string {
-        return 'privacy:metadata';
-    }
-}
+$string['pluginname'] = 'Anti-Crowdly quiz access rule that prevents Crowdly AI browser extensions from filling answers or leaking them to public databases.';
+$string['preventcrowdly'] = 'Prevent CrowdlyAI extension from filling or leaking questions';
+$string['notallowed'] = 'Crowdly AI Extension found!';
+$string['aiextensionfound'] = 'You must uninstall the CrowdlyAI extension(s) in your browser in order to be able to attempt the quiz.';
+$string['privacy:metadata'] = 'The Anti-Crowdly security quiz access rule plugin does not store any personal data.';

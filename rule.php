@@ -21,15 +21,15 @@ use mod_quiz\quiz_settings;
  * A rule for ensuring that the quiz is opened in a popup, with some JavaScript
  * to prevent copying and pasting, etc.
  *
- * @package   quizaccess_antiai
+ * @package   quizaccess_anticrowdly
  * @copyright  2026 ETH Zurich
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class quizaccess_antiai extends access_rule_base {
+class quizaccess_anticrowdly extends access_rule_base {
 
     public static function make(quiz_settings $quizobj, $timenow, $canignoretimelimits) {
 
-        if ($quizobj->get_quiz()->browsersecurity !== 'antiai') {
+        if ($quizobj->get_quiz()->browsersecurity !== 'anticrowdly') {
             return null;
         }
 
@@ -41,28 +41,28 @@ class quizaccess_antiai extends access_rule_base {
         $page->set_popup_notification_allowed(false); // Prevent message notifications.
         $page->set_title($this->quizobj->get_course()->shortname . ': ' . $page->title);
         $page->set_pagelayout('secure');
-        $this->antiai_getsessioninfo();
-        if($SESSION->quizaccess_antiai_access == 0){
-            throw new \moodle_exception(get_string('aiextensionfound','quizaccess_antiai'));
+        $this->anticrowdly_getsessioninfo();
+        if($SESSION->quizaccess_anticrowdly_access == 0){
+            throw new \moodle_exception(get_string('aiextensionfound','quizaccess_anticrowdly'));
         }
     }
     
     public function description(): array {
         global $PAGE, $SESSION;
         $messages = [];
-        if (!isset($SESSION->quizaccess_antiai_access)) {
-            $SESSION->quizaccess_antiai_access = 0;
+        if (!isset($SESSION->quizaccess_anticrowdly_access)) {
+            $SESSION->quizaccess_anticrowdly_access = 0;
         }
-        $this->antiai_getsessioninfo();
-        if($SESSION->quizaccess_antiai_access == 0){
-            $messages = [html_writer::div(get_string('aiextensionfound','quizaccess_antiai'), 'alert alert-warning')];
+        $this->anticrowdly_getsessioninfo();
+        if($SESSION->quizaccess_anticrowdly_access == 0){
+            $messages = [html_writer::div(get_string('aiextensionfound','quizaccess_anticrowdly'), 'alert alert-warning')];
         }
         return $messages;
 
     }
-    public static function antiai_getsessioninfo() {
+    public static function anticrowdly_getsessioninfo() {
          global $PAGE;
-        $PAGE->requires->js_call_amd('quizaccess_antiai/antiai', 'init');
+        $PAGE->requires->js_call_amd('quizaccess_anticrowdly/anticrowdly', 'init');
     }
 
     /**
@@ -70,7 +70,7 @@ class quizaccess_antiai extends access_rule_base {
      *      security settings menu.
      */
     public static function get_browser_security_choices() {
-        return ['antiai' =>
-                get_string('popupwithjavascriptsupport', 'quizaccess_antiai')];
+        return ['anticrowdly' =>
+                get_string('preventcrowdly', 'quizaccess_anticrowdly')];
     }
 }

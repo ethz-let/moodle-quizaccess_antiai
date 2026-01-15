@@ -17,7 +17,7 @@
 /**
  * Upgrade script for plugin.
  *
- * @package    quizaccess_antiai
+ * @package    quizaccess_anticrowdly
  * @author     ETH Zurich (moodle@id.ethz.ch)
  * @copyright  2026 ETH Zurich
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,14 +26,14 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Function to upgrade quizaccess_antiai plugin.
+ * Function to upgrade quizaccess_anticrowdly plugin.
  *
  * @return bool Result.
  */
-function xmldb_quizaccess_antiai_uninstall() {
+function xmldb_quizaccess_anticrowdly_uninstall() {
     global $DB;
     $dbman = $DB->get_manager();
-    $oldrecord = $DB->get_record('external_services', ['shortname' => 'AntiAI-Webservice']);
+    $oldrecord = $DB->get_record('external_services', ['shortname' => 'Anticrowdly-Webservice']);
     if ($oldrecord) {
         $params = ['id' => $oldrecord->id];
         $DB->delete_records('external_services', $params);
@@ -44,8 +44,8 @@ function xmldb_quizaccess_antiai_uninstall() {
         $uparams = ['externalserviceid' => $oldrecord->id];
         $DB->delete_records('external_services_users', $uparams);
     }
-    // Delete possible AntiAI connection data.
-    unset_all_config_for_plugin('quizaccess_antiai');
+    // Delete possible anticrowdly connection data.
+    unset_all_config_for_plugin('quizaccess_anticrowdly');
 
     return true;
 }

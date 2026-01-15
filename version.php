@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information for the quizaccess_antiai plugin.
+ * Version information for the quizaccess_anticrowdly plugin.
  *
  * @package    quizaccess
- * @subpackage antiai
+ * @subpackage anticrowdly
  * @copyright  2026 ETH Zurich
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,6 +27,6 @@
 defined('MOODLE_INTERNAL') || die();
 
 
-$plugin->version   = 2026011500;
+$plugin->version   = 2026011501;
 $plugin->requires  = 2024100100;
-$plugin->component = 'quizaccess_antiai';
+$plugin->component = 'quizaccess_anticrowdly';

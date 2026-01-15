@@ -14,36 +14,36 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace quizaccess_antiai;
+namespace quizaccess_anticrowdly;
 
 use mod_quiz\quiz_settings;
-use quizaccess_antiai;
+use quizaccess_anticrowdly;
 
 defined('MOODLE_INTERNAL') || die();
 
 global $CFG;
-require_once($CFG->dirroot . '/mod/quiz/accessrule/antiai/rule.php');
+require_once($CFG->dirroot . '/mod/quiz/accessrule/anticrowdly/rule.php');
 
 
 /**
- * Unit tests for the quizaccess_antiai plugin.
+ * Unit tests for the quizaccess_anticrowdly plugin.
  *
- * @package    quizaccess_antiai
+ * @package    quizaccess_anticrowdly
  * @copyright  2026 ETH Zurich
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @covers \mod_quiz\local\access_rule_base
- * @covers \quizaccess_antiai
+ * @covers \quizaccess_anticrowdly
  */
 final class rule_test extends \basic_testcase {
     // Nothing very testable in this class, just test that it obeys the general access rule contact.
-    public function test_antiai_access_rule(): void {
+    public function test_anticrowdly_access_rule(): void {
         $quiz = new \stdClass();
-        $quiz->browsersecurity = 'antiai';
+        $quiz->browsersecurity = 'anticrowdly';
         $cm = new \stdClass();
         $cm->id = 0;
         $quizobj = new quiz_settings($quiz, $cm, null);
-        $rule = new quizaccess_antiai($quizobj, 0);
+        $rule = new quizaccess_anticrowdly($quizobj, 0);
         $attempt = new \stdClass();
 
         $this->assertFalse($rule->prevent_access());

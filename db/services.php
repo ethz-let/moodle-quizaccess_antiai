@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * webservice the quizaccess_antiai plugin.
+ * webservice the quizaccess_anticrowdly plugin.
  *
- * @package   quizaccess_antiai
+ * @package   quizaccess_anticrowdly
  * @author    ETH Zurich (moodle@id.ethz.ch)
  * @copyright 2026 ETH Zurich
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -27,21 +27,21 @@ defined('MOODLE_INTERNAL') || die();
 
 // We define the services to install as pre-build services. A pre-build service is not editable by administrator.
 $services = [
-     'AntiAI Webservice' => [
-         'functions' => ['quizaccess_antiai_manageaccess'],
+     'Anticrowdly Webservice' => [
+         'functions' => ['quizaccess_anticrowdly_manageaccess'],
          'enabled' => 1,
-         'shortname' => 'AntiAI-Webservice',
+         'shortname' => 'Anticrowdly-Webservice',
      ],
  ];
 
  // We defined the web service functions to install.
 $functions = [
 
-    'quizaccess_antiai_manageaccess' => [
-        'classname' => 'quizaccess_antiai_external',
+    'quizaccess_anticrowdly_manageaccess' => [
+        'classname' => 'quizaccess_anticrowdly_external',
         'methodname' => 'manageaccess',
-        'classpath' => 'mod/quiz/accessrule/antiai/externallib.php',
-        'description' => 'Manage quiz access based on AI Extension findings',
+        'classpath' => 'mod/quiz/accessrule/anticrowdly/externallib.php',
+        'description' => 'Manage quiz access based on CrowdlyAI Extension findings',
         'type' => 'read',
         'ajax' => true,
     ],

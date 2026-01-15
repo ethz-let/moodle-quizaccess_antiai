@@ -2,7 +2,7 @@ define(['jquery', 'core/ajax'], function($, ajax) {
 
       
       function checkaiextension() {
-      if (navigator.userAgent.indexOf("Cdhrome") != -1) {
+      if (navigator.userAgent.indexOf("Chrome") != -1) {
         var extension_id = "idipjdgkafkkbklacjonnhkammdpigol";
         var extension_prefix = "chrome-extension://";
         console.error('Found Chrome: ' + extension_id);

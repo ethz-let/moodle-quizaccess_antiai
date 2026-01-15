@@ -1,5 +1,5 @@
 # moodle-quizaccess_antiai
-Anti-AI (Crowdly &amp; Co.) accessrule in moodle quiz
+Anti-AI (Anti CrowdlyAI for Moodle) accessrule in moodle quiz
 
 This is an early version that is still in need for tuning - use at your own risk. Tested on FF & Chrome.
 

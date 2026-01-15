@@ -3,12 +3,8 @@ define(['jquery', 'core/ajax'], function($, ajax) {
       function checkaiextension(originalstate) {
            var crowdvns = document.querySelector('[id^=crowdvns]');
            var crowdly = document.querySelector('[id^=crowdly]');
-           
            if(crowdvns !== null || crowdly !== null){
               // Found.
-              // Lets damage the crowdly divs.
-              document.querySelectorAll('[id^=crowdvns]').forEach(e => e.remove());
-              document.querySelectorAll('[id^=crowdly]').forEach(e => e.remove());
               var newstate = 0;
               checkcall(newstate);
            } else {
@@ -37,8 +33,11 @@ define(['jquery', 'core/ajax'], function($, ajax) {
            }
     }
     return {
+      
         init: function(originalstate) {
+         
            checkaiextension(originalstate);
+           
         }
     };
 });

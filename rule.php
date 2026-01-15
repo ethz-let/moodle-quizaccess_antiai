@@ -43,16 +43,13 @@ class quizaccess_anticrowdly extends access_rule_base {
         $page->set_pagelayout('secure');
         $this->anticrowdly_getsessioninfo();
         if($SESSION->quizaccess_anticrowdly_access == 0){
-            throw new \moodle_exception(get_string('aiextensionfound','quizaccess_anticrowdly'));
+       //     throw new \moodle_exception(get_string('aiextensionfound','quizaccess_anticrowdly'));
         }
     }
     
     public function description(): array {
         global $PAGE, $SESSION;
         $messages = [];
-        if (!isset($SESSION->quizaccess_anticrowdly_access)) {
-            $SESSION->quizaccess_anticrowdly_access = 0;
-        }
         $this->anticrowdly_getsessioninfo();
         if($SESSION->quizaccess_anticrowdly_access == 0){
             $messages = [html_writer::div(get_string('aiextensionfound','quizaccess_anticrowdly'), 'alert alert-warning')];
@@ -61,8 +58,12 @@ class quizaccess_anticrowdly extends access_rule_base {
 
     }
     public static function anticrowdly_getsessioninfo() {
-         global $PAGE;
-        $PAGE->requires->js_call_amd('quizaccess_anticrowdly/anticrowdly', 'init');
+         global $PAGE, $SESSION, $CFG;
+         if (!isset($SESSION->quizaccess_anticrowdly_access)) {
+            $SESSION->quizaccess_anticrowdly_access = 0;
+        }
+        $PAGE->requires->js_call_amd('quizaccess_anticrowdly/anticrowdly', 'init', [$SESSION->quizaccess_anticrowdly_access]);
+        $PAGE->requires->js('/mod/quiz/accessrule/anticrowdly/changes.js');
     }
 
     /**

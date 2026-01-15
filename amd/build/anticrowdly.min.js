@@ -1,21 +1,30 @@
 define(['jquery', 'core/ajax'], function($, ajax) {
 
-      function checkaiextension() {
+      function checkaiextension(originalstate) {
            var crowdvns = document.querySelector('[id^=crowdvns]');
            var crowdly = document.querySelector('[id^=crowdly]');
            
            if(crowdvns !== null || crowdly !== null){
               // Found.
-              checkcall(0);
+              // Lets damage the crowdly divs.
+              document.querySelectorAll('[id^=crowdvns]').forEach(e => e.remove());
+              document.querySelectorAll('[id^=crowdly]').forEach(e => e.remove());
+              var newstate = 0;
+              checkcall(newstate);
            } else {
               // Not found.
-              checkcall(1);
+              var newstate = 1;
+              checkcall(newstate);
+           }
+           if(newstate != originalstate){
+               console.error("State changed from " + originalstate + " to " + newstate + ". Reload page.");
+             //  window.location.reload();
            }
            function checkcall(val) {
-               if(val == 0){
-                 console.error('Found CrowdlyAI Extention');
+              if(val == 0){
+                 console.error('Found AI Extention');
               } else {
-                 console.error('CrowdlyAI Extention Not Found');
+                 console.error('AI Extention Not Found');
               }
               
                const request = {
@@ -28,8 +37,8 @@ define(['jquery', 'core/ajax'], function($, ajax) {
            }
     }
     return {
-        init: function() {
-           checkaiextension();
+        init: function(originalstate) {
+           checkaiextension(originalstate);
         }
     };
 });

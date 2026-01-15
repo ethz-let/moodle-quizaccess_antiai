@@ -50,11 +50,15 @@ class quizaccess_antiai extends access_rule_base {
     public function description(): array {
         global $PAGE, $SESSION;
         $messages = [];
+        if (!isset($SESSION->quizaccess_antiai_access)) {
+            $SESSION->quizaccess_antiai_access = 0;
+        }
         $this->antiai_getsessioninfo();
         if($SESSION->quizaccess_antiai_access == 0){
             $messages = [html_writer::div(get_string('aiextensionfound','quizaccess_antiai'), 'alert alert-warning')];
         }
         return $messages;
+
     }
     public static function antiai_getsessioninfo() {
          global $PAGE;
